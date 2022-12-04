@@ -1,4 +1,4 @@
-input = open('input2.txt').read()
+input = open('day2/input2.txt').read()
 
 games = input.split('\n')
 #print(games[0][2])

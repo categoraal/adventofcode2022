@@ -1,4 +1,4 @@
-input = open("input1.txt","r")
+input = open("day1/input1.txt","r")
 
 input = input.read() #string input
 lists = input.split('\n\n') #lists

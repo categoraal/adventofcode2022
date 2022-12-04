@@ -1,4 +1,4 @@
-input = open('input3.txt').read().split('\n')
+input = open('day3/input3.txt').read().split('\n')
 
 def doublePacked(x):
     a = x[:int(len(x)/2)]

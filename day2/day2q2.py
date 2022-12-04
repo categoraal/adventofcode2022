@@ -1,4 +1,4 @@
-input = open('input2.txt').read().split('\n')
+input = open('day2/input2.txt').read().split('\n')
 
 score = 0
 for i in range(len(input)):
