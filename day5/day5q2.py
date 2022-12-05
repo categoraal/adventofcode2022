@@ -1,7 +1,5 @@
 input = open('day5/input5.txt').read()
-
 stacks, moves = input.split('\n\n')
-
 stacks = stacks.split('\n')
 
 rows =[]
@@ -27,11 +25,9 @@ for i in range(int(len(moves)/3)):
     z = rows[a][-crates:]
     rows[a] = rows[a][:-crates]
     rows[b] = [*rows[b],*z] 
-
-    
+   
 res = []
 for i in range(9):
     res += rows[i].pop()
-
 res = ''.join(res)
 print(res)
