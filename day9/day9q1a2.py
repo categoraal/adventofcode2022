@@ -17,7 +17,6 @@ posTail = []
 for i in range(len(input)):
     for j in range(input[i][1]):
         oldHead = head.copy()
-        print(oldHead)
         if input[i][0] == 'U':
             head[1] += 1
         if input[i][0] == 'D':
