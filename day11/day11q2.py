@@ -1,4 +1,5 @@
 import math
+import time
 
 input = open('day11/input11.txt').read()
 input = input.split('\n\n')
@@ -17,12 +18,8 @@ def startingItems(x):
 
 def doFunc(x, oldValue): #runs the first function and divides by 3
     new = 0
-    #print('old',oldValue, type(oldValue))
     x = x[23:].split()
-    #print(x)
     if x[0] == '*' and x[1] != 'old':
-        #print(type(oldValue))
-        #print(x[1])
         new = oldValue * int(x[1])
     if x[0] == '*' and x[1] == 'old':
         #print(x[1], type(x[1]),type(int(x[1])))
@@ -31,8 +28,9 @@ def doFunc(x, oldValue): #runs the first function and divides by 3
         new = oldValue + int(x[1])
     if x[0] == '+' and x[1] == 'old':
         new = oldValue + oldValue
-    return math.floor(new/3)
-    
+    #return math.floor(new/3)
+    return new
+
 def throw(x, worry): #tells me to witch monkey the item is thrown
     monkey = 0
     test = int(x[3].split(' ')[-1])
@@ -57,8 +55,9 @@ def round(input, items, inspections):
         length = len(items[i])
         for j in range(length):
             inspections[i] += 1
-            if length == 0:
-                break
+#            if length == 0:
+#                break
+            
             items[i] = list(reversed(items[i]))
             worry = doFunc(input[i][2],items[i][-1])
             monkey = throw(input[i], worry)
@@ -70,7 +69,7 @@ def round(input, items, inspections):
 
 #round(input, items, inspections)
 #print(items)
-for i in range(20):
+for i in range(1000):
     if i%20 == 0:
         print(i)
     inspections = round(input, items, inspections)
