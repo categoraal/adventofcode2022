@@ -67,6 +67,5 @@ def findDistance(x,y,stack):
 
 for i in stack:
     findDistance(i[1],i[0],stack) # type: ignore
-    
-drawScreen(visitedMap)
+    drawScreen(visitedMap)
 print(distanceMap[end[1]][end[0]])# type: ignore

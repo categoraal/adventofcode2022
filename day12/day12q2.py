@@ -63,9 +63,11 @@ def findDistance(x,y,stack):
             stack.append([y,x+1])    
     return 0
 
-for j in range(len(input)):
-    for i in stack:
-        findDistance(i[1],i[0],stack) # type: ignore
-
+step = 0
+for i in stack:
+    findDistance(i[1],i[0],stack) # type: ignore
+    if step%10==0:
+        drawScreen(visitedMap)
+    step+=1
 print('the minimum distance = ',min([row[0] for row in distanceMap]))
-drawScreen(visitedMap)
+#drawScreen(visitedMap)
