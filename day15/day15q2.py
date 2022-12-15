@@ -30,7 +30,6 @@ def checkboundary(x):
             cy += i[1]
     return 0
 
-
 for i in input:
     res = checkboundary(i)
     if res == 1:
