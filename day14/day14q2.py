@@ -9,7 +9,7 @@ sandsource = [500,0]
 #find the boundaries of the cave map
 maxY = max(map(max,[[col[1] for col in row] for row in input]))+2
 maxX = 500 + maxY#(max(max(map(max, input)))) #upper x boundary
-minX = 500 - maxY#(min(map(min, [[col[0] for col in row] for row in input])))
+minX = 500 - maxY #(min(map(min, [[col[0] for col in row] for row in input])))
 print(maxY)
 #generate a kaart
 kaart = [list(range(minX,maxX+1,1)) for i in range(maxY+1)]
@@ -41,10 +41,11 @@ def generateMap(input):
 def drawScreen(X):
     screenstring = ''
     for y in range(len(X)):
+        screenstring = ''
         for x in range(len(X[0])):
             screenstring += str(X[y][x])
-        screenstring += '\n'
-    print(screenstring)
+        print(screenstring)# += '\n'
+    #print(screenstring)
 
 generateMap(input)
 kaart[0][500-minX] = 'S' # type: ignore
@@ -71,7 +72,7 @@ def dropSand(x,y):
     except:
         res = 0
     return res
-        
+drawScreen(kaart)        
 oldSandCounter = -1
 sandCounter = 0
 res = 0
