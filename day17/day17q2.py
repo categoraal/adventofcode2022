@@ -96,7 +96,7 @@ def extendfield():
 instructionCounter = 0
 lengths = [0]
 diffs = [0]
-for i in range(500000):
+for i in range(5000):
     a = i%5
     #print('rocknumber',a)
     instructionCounter = addrock(rocks[a],instructionCounter)
@@ -104,34 +104,6 @@ for i in range(500000):
     lengths.append(len(field)-8)
     diffs.append(lengths[-1] - lengths[-2])
 #drawScreen(field)
-print(diffs[:100])
-print(len(diffs))
-print(len(input))
-print(len(field)-8)
-print(lengths[10091])
-print(lengths[10091*2])
-
-
-def guess_seq_len(seq,offset):
-    guess = 1
-    max_len = int(len(seq) / 2)
-    for x in range(2, max_len):
-        if seq[offset+0:offset+x] == seq[offset+x:offset+2*x] :
-            return x
-
-#for offset in range(1000):
-#    res = guess_seq_len(lengths,offset)
-#    if res != None:
-#        print(res)
-
-#for i in range(20000):
-#    if lengths[i-10000+10091*10] - lengths[i-5000+10091*5] == lengths[i-5000+10091*5]:
-#        print('i',i)
-
-#print(lengths[10091*5])
-#print(lengths[10091*5*2])
-#print(lengths[10091*5*3])
-#print(lengths[10091*5*4])
 
 file1 = open('day17/day17file.txt','w')
 for i in lengths:
@@ -139,3 +111,16 @@ for i in lengths:
     file1.write('\n')
     
 file1.close()
+
+def finder():
+    for i in range(len(diffs)-1000):
+        for j in range(i+1,len(diffs)-1000):
+            if diffs[i:i+100] == diffs[j:j+100]:
+                print(i,j)
+                return i-j
+
+
+a = finder()
+
+step = lengths[1700+600]-lengths[600]
+print(int(lengths[200]+step*(1000000000000-200)/1700))
