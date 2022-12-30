@@ -37,32 +37,26 @@ bl = list(map(list,zip(*bl))) #transpose
 start = [input[0].index('.')-1,-1]
 end = [input[sizeY-1].index('.')-1,sizeY-2]
 print(start,end)
-
+count = []
 def blizzardMove():
-    #br[::-1]
     br.reverse()
     br.append(br.pop(0))
     br.reverse()
-    #br[::-1]
     bl.append(bl.pop(0))
     bu.append(bu.pop(0))
     bd.reverse()
     bd.append(bd.pop(0))
     bd.reverse()
-    #[print(x) for x in br]
-    #print('\n')
-    #[print(x) for x in bl]
-    #print('\n')
-    #[print(x) for x in bu]
-    #print('\n')
-    #[print(x) for x in bd]  
+    count.append(0)
+    print(len(count))
 
 queu = [start]
 ronde = 0
 def round(queu,ronde):
+    print('start round',ronde)
     blizzardMove()
     ronde += 1
-    print('ronde',ronde,'queu',len(queu))
+    #print('ronde',ronde,'queu',len(queu))
     res = []    
     #print(queu)
     for i in queu:
@@ -75,19 +69,53 @@ def round(queu,ronde):
             if k >= 0 and k < sizeX-2 and l >= 0 and l < sizeY-2:
                 if bu[l][k] == '.' and bd[l][k]== '.' and br[k][l] == '.' and bl[k][l] =='.'and [k,l] not in res:
                     res.append([k,l])
-                    #print('x,y',k,l)
             if start not in res:
                 res.append(start)
 
             if [k,l+1] == end:
-                print('ronde',ronde+1)
-                return 0
-        
-            #res.append(start)  
-    
-    #if ronde == 3:
-    #    return 0
-    #unique_data = [list(x) for x in set(tuple(x) for x in res)]
-    round(res,ronde)
+                #print('ronde',ronde+1)
+                blizzardMove()
+                return ronde+1
+    return round(res,ronde)
 
-print(round(queu,ronde))
+def round2(queu,ronde):
+    blizzardMove()
+    ronde += 1
+    print('start round',ronde)
+    res = []    
+    for i in queu:
+        dir = (1,0),(-1,0),(0,1),(0,-1),(0,0)
+        x,y = i
+        for j in dir:
+            u,v = j
+            k,l = x+u,y+v
+            if k >= 0 and k < sizeX-2 and l >= 0 and l < sizeY-2:
+                if bu[l][k] == '.' and bd[l][k]== '.' and br[k][l] == '.' and bl[k][l] =='.'and [k,l] not in res:
+                    res.append([k,l])
+            if start not in res:
+                res.append(start)
+
+            if [k,l-1] == end:
+                blizzardMove()
+                return ronde+1
+    
+    #if ronde == 100:
+    #    return 0#
+    #unique_data = [list(x) for x in set(tuple(x) for x in res)]
+    return round2(res,ronde)
+
+ronde = (round(queu,ronde))
+print('round 1:',ronde)
+#blizzardMove()
+#blizzardMove()
+a = end
+end = start
+start = a
+ronde = (round2([start],ronde))
+print('round 2:',ronde)
+#blizzardMove()
+a = end
+end = start
+start = a
+ronde =(round([start],ronde))
+print('round 3:',ronde)

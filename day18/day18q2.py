@@ -1,6 +1,5 @@
 import copy
 input = open('day18/input18.txt').read().strip().split('\n')
-
 input = [[int(x) for x in y.split(',')] for y in input]
 
 air = [[0,0,0]]
