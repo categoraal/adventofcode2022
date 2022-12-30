@@ -5,7 +5,6 @@ def doublePacked(x):
     b = x[int(len(x)/2):]
     return a,b
 
-
 def overlap(z):
     for i in range(len(z[0])):
         for j in range(len(z[1])):
@@ -20,5 +19,5 @@ valuePairs = {'A':27,'B':28,'C':29,'D':30,'E':31,'F':32,'G':33,'H':34,'I':35,'J'
 
 priority = 0
 for i in range(len(input)):
-    priority += valuePairs.get(overlap(doublePacked(input[i])))
+    priority += valuePairs.get(overlap(doublePacked(input[i]))) #type: ignore
 print('the priority is',priority)

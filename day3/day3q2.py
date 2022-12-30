@@ -13,6 +13,6 @@ def badge(x):
 
 sum = 0
 for i in range(int(len(input)/3)):
-    sum += int(valuePairs.get(badge(input[i*3:i*3+3])))
+    sum += int(valuePairs.get(badge(input[i*3:i*3+3]))) #type: ignore
 
 print('The value = ',sum)
